@@ -1,6 +1,6 @@
-Revo Blowtorch
+DarkRP Blowtorch
 =======
-Simple blowtorch for DarkRP
+Simple prop fader for DarkRP raiding.
 
 Description
 -------
