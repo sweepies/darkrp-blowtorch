@@ -1,5 +1,3 @@
-
------------------------------------------------------
 if (SERVER) then
 	AddCSLuaFile("shared.lua")
 end
@@ -19,6 +17,7 @@ SWEP.WorldModel = Model("models/weapons/w_Pistol.mdl")
 
 SWEP.Spawnable = false
 SWEP.AdminSpawnable = true
+SWEP.Category = "DarkRP (Utility)"
 
 SWEP.FadingSound = Sound("buttons/blip1.wav")
 SWEP.Sound = Sound("physics/wood/wood_box_impact_hard3.wav")
@@ -76,15 +75,22 @@ function SWEP:Succeed(ply, trace)
 	owner:ViewPunch(Angle(-10, math.random(-5, 5), 0))
 	
 	local target = self.dt.target
-	target:SetMaterial("sprites/heatwave")
+	--target:SetMaterial("sprites/heatwave")
+	local col = target:GetColor()
+	target:SetColor( Color( col.r, col.g, col.b, 222 ) )
+	target:SetRenderMode(RENDERMODE_TRANSALPHA)
+	--target:SetCollisionGroup(COLLISION_GROUP_WORLD)
 	target:DrawShadow(false)
 	target:SetNotSolid(true)
 	target.faded = true
 	timer.Simple(self.FadeDuration, function()
 		if (target and target:IsValid()) then
-			target:SetMaterial("")
+			--target:SetMaterial("")
+			target:SetColor( Color( col.r, col.g, col.b, 255 ) )
+			target:SetRenderMode(RENDERMODE_NORMAL)
 			target:DrawShadow(true)
 			target:SetNotSolid(false)
+			--target:SetCollisionGroup(COLLISION_GROUP_NONE)
 			target.faded = nil
 		end
 	end)
