@@ -10,7 +10,10 @@ if (CLIENT) then
 	SWEP.DrawCrosshair = false
 end
 
+SWEP.Author = "Sweepyoface"
 SWEP.Instructions = "Left click to temporarily fade a prop."
+SWEP.Contact = "github@sweepy.pw"
+SWEP.Purpose = ""
 
 SWEP.ViewModel = Model("models/weapons/v_Pistol.mdl")
 SWEP.WorldModel = Model("models/weapons/w_Pistol.mdl")
